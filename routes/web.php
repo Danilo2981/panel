@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Users
+Route::get('/users', [UserController::class, 'index']);
+Route::post('/users/users', [UserController::class, 'create'])->name('users.create');
+Route::delete('/users/{user}', [UserController::class, 'delete'])->name('users.delete');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
