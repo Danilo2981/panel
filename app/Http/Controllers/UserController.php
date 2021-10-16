@@ -14,13 +14,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::latest()->get();
+        return 'Usuarios';
+        // $users = User::latest()->get();
 
-        return view('users.index', [
-            'users' => $users
-        ]);
-
-       
+        // return view('users.index', [
+        //     'users' => $users
+        // ]);       
     }
 
     /**
@@ -29,8 +28,8 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {   
+        return 'Crear nuevo usuario';
     }
 
     /**
@@ -58,7 +57,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        return "Mostrando detalle del usuario: {$id}";
     }
 
     /**
