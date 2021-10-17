@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -29,5 +30,9 @@ Route::delete('/users/{user}', [UserController::class, 'delete']);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::get('/home', [
+    HomeController::class, 'index'
+])->middleware(['auth'])->name('admindashboard');
 
 require __DIR__.'/auth.php';
