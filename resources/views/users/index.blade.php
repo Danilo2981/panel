@@ -1,55 +1,77 @@
-@extends('dashboard')
+@extends('admin.dashboard')
+
+@section('title', 'Usuarios')
 
 @section('content')
-    <section class="relative py-16 bg-blueGray-50">
-        <div class="w-full mb-12 px-4">
-          <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded 
-          bg-pink-900 text-white">
-            <div class="rounded-t mb-0 px-4 py-3 border-0">
-              <div class="flex flex-wrap items-center">
-                <div class="relative w-full px-4 max-w-full flex-grow flex-1 ">
-                  <h3 class="font-semibold text-lg text-white">Usuarios</h3>
-                </div>
-              </div>
-            </div>
-            <div class="block w-full overflow-x-auto ">
-              <table class="items-center w-full bg-transparent border-collapse">
-                <thead>
+    <div class="w-full mt-12">
+      <p class="text-xl pb-3 flex items-center">
+          <i class="fas fa-list mr-3"></i> {{ $title }}
+      </p>
+      <div class="bg-white overflow-auto">
+          <table class="min-w-full leading-normal">
+              <thead>
                   <tr>
-                    <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-pink-800 text-pink-300 border-pink-700">ID</th>
-                    <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-pink-800 text-pink-300 border-pink-700">Nombre</th>
-                    <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-pink-800 text-pink-300 border-pink-700">Email</th>
-                    <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-pink-800 text-pink-300 border-pink-700">Options </th>
-                    <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-pink-800 text-pink-300 border-pink-700"></th>
+                      <th
+                          class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                          Usuario
+                      </th>
+                      <th
+                          class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                          Rol
+                      </th>
+                      <th
+                          class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                          Created at
+                      </th>
+                      <th
+                          class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                          E-mail
+                      </th>
+                      <th
+                          class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                          Status
+                      </th>
                   </tr>
-                </thead>
-        
-                <tbody>
-                    @foreach ($users as $user)
-                    <tr>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{ $user->id }}</td>
-                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
-                            <img src="https://demos.creative-tim.com/notus-js/assets/img/team-1-800x800.jpg" alt="..." class="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow">
-                          <span class="ml-3 font-bold text-white"> {{ $user->name }} </span></th>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                          <i class="fas fa-circle text-orange-500 mr-2"></i>{{ $user->email }}</td>
-                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">Eliminar</td>                    </tr>  
-                    @endforeach  
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-            <footer class="relative pt-8 pb-6 mt-8">
-              <div class="container mx-auto px-4">
-                <div class="flex flex-wrap items-center md:justify-between justify-center">
-                  <div class="w-full md:w-6/12 px-4 mx-auto text-center">
-                    <div class="text-sm text-blueGray-500 font-semibold py-1">
-                      Made with DVEGA & ADAVILA.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </footer>
-        </section>
+              </thead>
+              <tbody>
+                  <tr>
+                      @foreach ($users as $user)
+                      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 w-10 h-10">
+                                <img class="w-full h-full rounded-full"
+                                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
+                                    alt="" />
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-gray-900 whitespace-no-wrap">
+                                    {{ $user->name }}
+                                </p>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <p class="text-gray-900 whitespace-no-wrap">Admin</p>
+                    </td>
+                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <p class="text-gray-900 whitespace-no-wrap">
+                            {{ $user->created_at }}
+                        </p>
+                    </td>
+                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                      <p class="text-gray-900 whitespace-no-wrap">{{ $user->email }}</p>
+                    </td>
+                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <span
+                            class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                            <span aria-hidden
+                                class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
+                            <span class="relative">Activo</span>
+                        </span>
+                    </td>
+                      @endforeach
+                  </tr>
+              </tbody>
+          </table>
+      </div>
 @endsection

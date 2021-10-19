@@ -14,12 +14,14 @@ class UserController extends Controller
      */
     public function index()
     {
-        return 'Usuarios';
-        // $users = User::latest()->get();
+        $title = 'Listado de usuarios';
 
-        // return view('users.index', [
-        //     'users' => $users
-        // ]);       
+        $users = User::latest()->get();
+
+        return view('users.index', [
+            'users' => $users,
+            'title' => $title
+        ]);       
     }
 
     /**
@@ -57,7 +59,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return "Mostrando detalle del usuario: {$id}";
+        return view('users.show', compact('id'));
     }
 
     /**
