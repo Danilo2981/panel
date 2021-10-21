@@ -34,13 +34,13 @@
                   </tr>
               </thead>
               <tbody>
+                @foreach ($users as $user)
                   <tr>
-                      @foreach ($users as $user)
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <div class="flex items-center">
                             <div class="flex-shrink-0 w-10 h-10">
                                 <img class="w-full h-full rounded-full"
-                                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
+                                    src={{ $user->image }}
                                     alt="" />
                             </div>
                             <div class="ml-3">
@@ -69,8 +69,8 @@
                             <span class="relative">Activo</span>
                         </span>
                     </td>
-                      @endforeach
-                  </tr>
+                </tr>
+                @endforeach
               </tbody>
           </table>
       </div>
