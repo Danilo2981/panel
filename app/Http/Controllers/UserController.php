@@ -16,12 +16,9 @@ class UserController extends Controller
     {
         $title = 'Listado de usuarios';
 
-        $users = User::latest()->get();
+        $users = User::all();
 
-        return view('users.index', [
-            'users' => $users,
-            'title' => $title
-        ]);       
+        return view('users.index', compact('title', 'users'));       
     }
 
     /**

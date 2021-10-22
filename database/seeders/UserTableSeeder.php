@@ -14,16 +14,19 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->count(10)->create([
-            'image'=>'http://lorempixel.com/400/400/people',
-        ]);
-
         User::factory()->create([
             'name' => 'Danilo Vega',
             'email' => 'danilo.vega.lopez@gmail.com',
             'email_verified_at' => now(),
             'password' => bcrypt('123456'),
             'image'=>'http://lorempixel.com/400/400/people',
+            'is_admin' => true,
         ]);
+
+        User::factory()->count(60)->create([
+            'image'=>'http://lorempixel.com/400/400/people',
+        ]);
+
+        
     }
 }
