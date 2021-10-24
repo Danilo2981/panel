@@ -41,6 +41,12 @@
              <p class=""> 
                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget laoreet diam, id luctus lectus. Ut consectetur nisl ipsum, et faucibus sem finibus vitae. Maecenas aliquam dolor at dignissim commodo. Etiam a aliquam tellus, et suscipit dolor. Proin auctor nisi velit, quis aliquet sapien viverra a. 
              </p>
+             <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+             <span aria-hidden class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
+             <span class="relative">
+                 <a href="{{ route('users') }}">Ver lista de usuarios.</a>
+             </span>
+         </span>
          </div>
              
      </div>

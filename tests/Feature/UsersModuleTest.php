@@ -42,6 +42,14 @@ class UsersModuleTest extends TestCase
     }
 
     /** @test */
+    public function it_displays_a_404_error_if__the_user_is_not_found()
+    {
+        $this->get('/users/1999')
+        ->assertStatus(404)
+        ->assertSee('oops! Page not found');
+    }
+
+    /** @test */
     public function it_loads_the_the_new_user_page()
     {
         $this->get('/users/nuevo')

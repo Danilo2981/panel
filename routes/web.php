@@ -16,15 +16,15 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome')->name('home');
 });
 
 // Users
-Route::get('/users', [UserController::class, 'index']);
-Route::get('/users/nuevo', [UserController::class, 'create']);
-Route::get('users/{id}', [UserController::class, 'show']);
-Route::post('/users/users', [UserController::class, 'store']);
-Route::delete('/users/{user}', [UserController::class, 'delete']);
+ Route::get('/users', [UserController::class, 'index'])->name('users');
+Route::get('/users/nuevo', [UserController::class, 'create'])->name('users.create');
+Route::get('users/{id}', [UserController::class, 'show'])->name('users.show');
+Route::post('/users/users', [UserController::class, 'store'])->name('users.store');
+Route::delete('/users/{user}', [UserController::class, 'delete'])->name('users.delete');
 
 
 Route::get('/dashboard', function () {
