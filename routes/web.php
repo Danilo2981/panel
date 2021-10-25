@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 
 // Users
- Route::get('/users', [UserController::class, 'index'])->name('users');
+Route::get('/users', [UserController::class, 'index'])->name('users');
 Route::get('/users/nuevo', [UserController::class, 'create'])->name('users.create');
 Route::get('users/{id}', [UserController::class, 'show'])->name('users.show');
 Route::post('/users/users', [UserController::class, 'store'])->name('users.store');
@@ -36,3 +36,4 @@ Route::get('/home', [
 ])->middleware(['auth'])->name('admindashboard');
 
 require __DIR__.'/auth.php';
+require __DIR__.'/empresa.php';
