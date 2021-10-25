@@ -28,7 +28,11 @@ class EmpresaController extends Controller
      */
     public function create()
     {
-        //
+        $title = 'Nuevo cliente';
+
+        $empresas = Empresa::all();
+
+        return view('empresas.create', compact('title', 'empresas'));
     }
 
     /**
@@ -39,7 +43,12 @@ class EmpresaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            Empresa::create($request->all());
+            return redirect()->route('empresas')->with('success', 'Empresa Registrada');
+        } catch (\Exception $e) {
+            return back()->withErrors(['exception' => $e->getMessage()])->withInput();
+        }
     }
 
     /**

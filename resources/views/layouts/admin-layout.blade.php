@@ -20,13 +20,13 @@
         <style>
             @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
             .font-family-karla { font-family: karla; }
-            .bg-sidebar { background: #3d68ff; }
-            .cta-btn { color: #3d68ff; }
-            .upgrade-btn { background: #1947ee; }
-            .upgrade-btn:hover { background: #0038fd; }
-            .active-nav-link { background: #1947ee; }
-            .nav-item:hover { background: #1947ee; }
-            .account-link:hover { background: #3d68ff; }
+            .bg-sidebar { background: #9EC867; }
+            .cta-btn { color: #B1D385; }
+            .upgrade-btn { background: #8ABD48; }
+            .upgrade-btn:hover { background: #63A70B; }
+            .active-nav-link { background: #8ABD48; }
+            .nav-item:hover { background: #8ABD48; }
+            .account-link:hover { background: #B1D385; }
         </style>
     
     </head>
@@ -242,6 +242,14 @@
                 }
             }
         });
+
+        function toggleModal(modalID){
+            document.getElementById(modalID).classList.toggle("hidden");
+            document.getElementById(modalID + "-backdrop").classList.toggle("hidden");
+            document.getElementById(modalID).classList.toggle("flex");
+            document.getElementById(modalID + "-backdrop").classList.toggle("flex");
+        }
+        
     </script>
     </body>
 </html>

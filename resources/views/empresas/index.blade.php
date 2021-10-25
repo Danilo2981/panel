@@ -7,9 +7,11 @@
         <i class="fas fa-list mr-3"></i> {{ $title }}
     </p>
     <div>
-        <button class="w-64 bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-            <i class="fas fa-plus mr-3"></i> Nuevo Cliente
-        </button>
+        <a href="{{ route('empresas.create') }}">
+            <button class="w-64 bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
+                <i class="fas fa-plus mr-3"></i> Nuevo Cliente
+            </button>
+        </a>
     </div>    
     <div class="w-full mt-4">
         <div class="bg-white overflow-auto">
