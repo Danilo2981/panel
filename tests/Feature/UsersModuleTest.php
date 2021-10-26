@@ -57,4 +57,22 @@ class UsersModuleTest extends TestCase
         ->assertSee('Crear nuevo usuario');
     }
 
+    /** @test */
+    public function it_creates_a_new_user()
+    {
+        $this->withoutExceptionHandling();
+
+        $this->post(route('users.store'), [
+            'name' => 'Danilo',
+            'email' => 'danilo.vega.lopez@gmail.com',
+            'password' => '123456'
+        ])->assertRedirect(route('users'));
+
+        $this->assertCredentials([
+            'name' => 'Danilo',
+            'email' => 'danilo.vega.lopez@gmail.com',
+            'password' => '123456'
+        ]);
+    }
+
 }

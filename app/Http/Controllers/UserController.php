@@ -28,7 +28,9 @@ class UserController extends Controller
      */
     public function create()
     {   
-        return 'Crear nuevo usuario';
+        $title = 'Crear nuevo usuario';
+
+        return view('users.create', compact('title'));
     }
 
     /**
@@ -39,13 +41,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $data = request()->all();
+
         User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => $request->password
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
         ]);
 
-        return back();
+        return redirect()->route('users');
     }
 
     /**
@@ -57,10 +61,6 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
-
-        // if ($user == null) {
-        //     return response()->view('errors.404', [], 404);
-        // }
 
         return view('users.show', compact('user'));
     }

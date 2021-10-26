@@ -42,7 +42,11 @@
             </button>
         </div>
         <nav class="text-white text-base font-semibold pt-3">
-            <a href="{{ route('empresas') }}" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
+            <a href="{{ route('users') }}" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
+                <i class="fas fa-user mr-3"></i>
+                Usuarios
+            </a>
+            <a href="{{ route('empresas') }}" class="flex items-center text-white py-4 pl-6 nav-item">
                 <i class="fas fa-building mr-3"></i>
                 Clientes
             </a>
@@ -179,7 +183,7 @@
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
                         'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(96, 167, 11, 0.2)',
                         'rgba(153, 102, 255, 0.2)',
                         'rgba(255, 159, 64, 0.2)'
                     ],
@@ -187,7 +191,7 @@
                         'rgba(255, 99, 132, 1)',
                         'rgba(54, 162, 235, 1)',
                         'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
+                        'rgba(96, 167, 11, 1)',
                         'rgba(153, 102, 255, 1)',
                         'rgba(255, 159, 64, 1)'
                     ],
@@ -217,7 +221,7 @@
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
                         'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(96, 167, 11, 0.2)',
                         'rgba(153, 102, 255, 0.2)',
                         'rgba(255, 159, 64, 0.2)'
                     ],
@@ -225,7 +229,7 @@
                         'rgba(255, 99, 132, 1)',
                         'rgba(54, 162, 235, 1)',
                         'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
+                        'rgba(96, 167, 11, 1)',
                         'rgba(153, 102, 255, 1)',
                         'rgba(255, 159, 64, 1)'
                     ],
@@ -241,15 +245,7 @@
                     }]
                 }
             }
-        });
-
-        function toggleModal(modalID){
-            document.getElementById(modalID).classList.toggle("hidden");
-            document.getElementById(modalID + "-backdrop").classList.toggle("hidden");
-            document.getElementById(modalID).classList.toggle("flex");
-            document.getElementById(modalID + "-backdrop").classList.toggle("flex");
-        }
-        
+        });        
     </script>
     </body>
 </html>
