@@ -45,7 +45,13 @@
                                     <i class="fas fa-landmark"></i>
                                 </span>
                             </a>
-                            <a href="">
+                            <a href="{{ route('empresas.show', $empresa) }}">
+                                <span class="relative inline-block px-3 py-1 font-semibold text-blue-900 leading-tight">
+                                    <span aria-hidden class="absolute inset-0 bg-blue-200 opacity-50 rounded-full"></span>
+                                    <i class="fas fa-eye"></i>
+                                </span>
+                            </a>
+                            <a href="{{ route('empresas.edit', $empresa) }}">
                                 <span class="relative inline-block px-3 py-1 font-semibold text-blue-900 leading-tight">
                                     <span aria-hidden class="absolute inset-0 bg-blue-200 opacity-50 rounded-full"></span>
                                     <i class="fas fa-pen"></i>

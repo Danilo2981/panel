@@ -41,7 +41,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $data = request()->all();
+        $data = request()->validate([
+            'name' => 'required',
+            'email' => ['required', ]
+        ],[
+            'name.required' => 'El campo nombre es obligatorio'
+        ]);
 
         User::create([
             'name' => $data['name'],
@@ -58,10 +63,8 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        $user = User::findOrFail($id);
-
         return view('users.show', compact('user'));
     }
 

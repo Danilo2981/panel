@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Empresa;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class EmpresaController extends Controller
 {
@@ -43,8 +44,23 @@ class EmpresaController extends Controller
      */
     public function store(Request $request)
     {
+        $data = request()->validate([
+            'nombre' => ['required', Rule::unique('empresas')],
+            'ruc' => ['required', Rule::unique('empresas'), 'numeric', 'digits:13']
+        ],[
+            'nombre.required' => 'El nombre es requerido',
+            'nombre.unique' => 'El cliente ya existe',
+            'ruc.required' => 'El ruc es requerido',
+            'ruc.unique' => 'El ruc ya existe',
+            'ruc.numeric' => 'El ruc debe contener solo numeros',
+            'ruc.digits' => 'El ruc debe tener 13 digitos'
+        ]);
+
         try {
-            Empresa::create($request->all());
+            Empresa::create([
+                'nombre' => $data['nombre'],
+                'ruc' => $data['ruc'],
+            ]);            
             return redirect()->route('empresas')->with('success', 'Empresa Registrada');
         } catch (\Exception $e) {
             return back()->withErrors(['exception' => $e->getMessage()])->withInput();
@@ -57,9 +73,9 @@ class EmpresaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Empresa $empresa)
     {
-        //
+        return view('empresas.show', compact('empresa'));
     }
 
     /**
@@ -68,9 +84,16 @@ class EmpresaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Empresa $empresa)
     {
-        //
+        $title = 'Editar cliente';
+
+        return view('empresas.edit', [
+            'empresa' => $empresa,
+            'title' => $title
+        ]);
+
+        
     }
 
     /**
@@ -80,9 +103,26 @@ class EmpresaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Empresa $empresa)
     {
-        //
+        $data = request()->validate([
+            'nombre' => ['required', Rule::unique('empresas')],
+            'ruc' => ['required', Rule::unique('empresas'), 'numeric', 'digits:13']
+        ],[
+            'nombre.required' => 'El nombre es requerido',
+            'nombre.unique' => 'El cliente ya existe',
+            'ruc.required' => 'El ruc es requerido',
+            'ruc.unique' => 'El ruc ya existe',
+            'ruc.numeric' => 'El ruc debe contener solo numeros',
+            'ruc.digits' => 'El ruc debe tener 13 digitos'
+        ]);
+
+        // try {
+            $empresa->update($data);
+            return redirect()->route('empresas.show', ['empresa' => $empresa->id])->with('success', 'Empresa actualizada');
+        // } catch (\Exception $e) {
+        //     return back()->withErrors(['exception' => $e->getMessage()])->withInput();
+        // }
     }
 
     /**

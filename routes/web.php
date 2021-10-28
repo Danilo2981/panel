@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,13 +18,6 @@ Route::get('/', function () {
     return view('welcome')->name('home');
 });
 
-// Users
-Route::get('/users', [UserController::class, 'index'])->name('users');
-Route::get('/users/nuevo', [UserController::class, 'create'])->name('users.create');
-Route::get('users/{id}', [UserController::class, 'show'])->name('users.show');
-Route::post('/users/users', [UserController::class, 'store'])->name('users.store');
-Route::delete('/users/{user}', [UserController::class, 'delete'])->name('users.delete');
-
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -36,4 +28,5 @@ Route::get('/home', [
 ])->middleware(['auth'])->name('admindashboard');
 
 require __DIR__.'/auth.php';
+require __DIR__.'/user.php';
 require __DIR__.'/empresa.php';

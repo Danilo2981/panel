@@ -75,7 +75,7 @@
                             <span aria-hidden
                                 class="absolute inset-0 bg-blue-200 opacity-50 rounded-full"></span>
                             <span class="relative">
-                                <a href="{{ route('users.show', ['id' => $user->id]) }}">
+                                <a href="{{ route('users.show', $user) }}">
                                     <i class="fas fa-user"></i>
                                 </a>
                             </span>
