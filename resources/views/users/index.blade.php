@@ -66,17 +66,24 @@
                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <span
                             class="relative inline-block px-3 py-1 font-semibold text-blue-900 leading-tight">
-                            <span aria-hidden
-                                class="absolute inset-0 bg-blue-200 opacity-50 rounded-full"></span>
+                            <span aria-hidden class="absolute inset-0 bg-blue-200 opacity-50 rounded-full"></span>
                             <span class="relative">Activo</span>
                         </span>
                         <span
                             class="relative inline-block px-3 py-1 font-semibold text-blue-900 leading-tight">
-                            <span aria-hidden
-                                class="absolute inset-0 bg-blue-200 opacity-50 rounded-full"></span>
+                            <span aria-hidden class="absolute inset-0 bg-blue-200 opacity-50 rounded-full"></span>
                             <span class="relative">
                                 <a href="{{ route('users.show', $user) }}">
                                     <i class="fas fa-user"></i>
+                                </a>
+                            </span>
+                        </span>
+                        <span
+                            class="relative inline-block px-3 py-1 font-semibold text-blue-900 leading-tight">
+                            <span aria-hidden class="absolute inset-0 bg-blue-200 opacity-50 rounded-full"></span>
+                            <span class="relative">
+                                <a href="{{ route('users.edit', $user) }}">
+                                    <i class="fas fa-pen"></i>
                                 </a>
                             </span>
                         </span>

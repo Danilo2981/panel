@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -43,9 +44,14 @@ class UserController extends Controller
     {
         $data = request()->validate([
             'name' => 'required',
-            'email' => ['required', ]
+            'email' => ['required', 'email', Rule::unique('users')],
+            'password' => ['required', 'min:6']
         ],[
-            'name.required' => 'El campo nombre es obligatorio'
+            'name.required' => 'El campo nombre es obligatorio',
+            'email.required' => 'El email es requerido',
+            'email.unique' => 'El email de ser unico',
+            'password.required' => 'El password es requerido',
+            'password.min' => 'El password debe tener mas de 6 caracteres'
         ]);
 
         User::create([
@@ -74,9 +80,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        $title = 'Editar Usuario';
+
+        return view('users.edit', compact ('user','title'));
     }
 
     /**
@@ -86,9 +94,29 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(User $user)
     {
-        //
+        $data = request()->validate([
+            'name' => 'required',
+            'email' => ['required', 'email', Rule::unique('users')->ignore($user->id)],
+            'password' => ''
+        ],[
+            'name.required' => 'El campo nombre es obligatorio',
+            'email.required' => 'El email es requerido',
+            'email.unique' => 'El email de ser unico',
+            'password.required' => 'El password es requerido',
+            'password.min' => 'El password debe tener mas de 6 caracteres'
+        ]);
+
+        if ($data['password'] != null) {
+            $data['password'] = bcrypt($data['password']);
+        } else {
+            unset($data['password']);
+        }
+
+        $user->update($data);
+
+        return redirect(route('users.show', ['user' => $user]));
     }
 
     /**

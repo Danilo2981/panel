@@ -19,21 +19,21 @@
                          class="text-sm border bg-blue-50 font-bold uppercase border-2 rounded-l px-4 py-2 bg-gray-50 whitespace-no-wrap w-2/6">Name:</span>
                      <input 
                          class="px-4 border-l-0 cursor-default border-gray-300 focus:outline-none  rounded-md rounded-l-none shadow-sm -ml-1 w-4/6"
-                         type="text" value={{ $user->name }}  readonly/>
+                         type="text" value="{{ $user->name }}"  readonly/>
                  </div>
                  <div class="flex ">
                      <span
                          class="text-sm border bg-blue-50 font-bold uppercase border-2 rounded-l px-4 py-2 bg-gray-50 whitespace-no-wrap w-2/6">Email:</span>
                      <input 
                          class="px-4 border-l-0 cursor-default border-gray-300 focus:outline-none  rounded-md rounded-l-none shadow-sm -ml-1 w-4/6"
-                         type="text" value={{ $user->email }}  readonly/>
+                         type="text" value="{{ $user->email }}"  readonly/>
                  </div>
                   <div class="flex ">
                      <span
                          class="text-sm border bg-blue-50 font-bold uppercase border-2 rounded-l px-4 py-2 bg-gray-50 whitespace-no-wrap w-2/6">Role:</span>
                      <input 
                          class="px-4 border-l-0 cursor-default border-gray-300 focus:outline-none  rounded-md rounded-l-none shadow-sm -ml-1 w-4/6"
-                         type="text" value={{ $user->is_admin }}  readonly/>
+                         type="text" value="{{ $user->is_admin }}"  readonly/>
                  </div>
          </div>
          <div class="md:col-span-3 h-48 shadow-xl p-4 space-y-2 hidden md:block">

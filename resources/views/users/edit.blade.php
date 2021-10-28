@@ -9,7 +9,7 @@
     <div>
         <a href="{{ route('users.create') }}">
             <button class="w-64 bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-                <i class="fas fa-plus mr-3"></i> Nuevo Usuario
+                <i class="fas fa-plus mr-3"></i> Editar Usuario
             </button>
         </a>
     </div>    
@@ -21,12 +21,12 @@
                 Por favor corrija los errores para continuar.
             </span>
             @endif
-            <form class="p-10 bg-white rounded shadow-xl" action="{{ route('users.store') }}" method="POST">
-                {{ method_field('POST') }}
+            <form class="p-10 bg-white rounded shadow-xl" action="{{ url("users/{$user->id}") }}" method="POST">
+                {{ method_field('PUT') }}
                 {{ csrf_field() }}
                 <div class="w-full">
                     <label class="block text-sm text-gray-600" for="name">Nombre</label>
-                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="name" name="name" type="text" placeholder="Nombre del Usuario" value="{{ old('name') }}" aria-label="Name">
+                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="name" name="name" type="text" placeholder="Nombre del Usuario" value="{{ old('name', $user->name) }}" aria-label="Name">
                 </div>
                 @if ($errors->has('name'))
                     <span class="flex items-center font-medium tracking-wide text-red-500 text-s mt-1 ml-1">
@@ -35,7 +35,7 @@
                 @endif
                 <div class="w-full mt-2">
                     <label class="block text-sm text-gray-600" for="email">e-mail</label>
-                    <input class="w-full px-5  py-1 text-gray-700 bg-gray-200 rounded" id="email" name="email" type="email" placeholder="E-mail del Usuario" value="{{ old('email') }}" aria-label="Email">
+                    <input class="w-full px-5  py-1 text-gray-700 bg-gray-200 rounded" id="email" name="email" type="email" placeholder="E-mail del Usuario" value="{{ old('email', $user->email) }}" aria-label="Email">
                 </div>
                 @if ($errors->has('email'))
                     <span class="flex items-center font-medium tracking-wide text-red-500 text-s mt-1 ml-1">
@@ -53,7 +53,7 @@
                 @endif
                 <div class="mt-6">
                     <button type="submit" class="w-full bg-white cta-btn font-semibold py-2 mt-3 rounded-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-                        <i class="fas fa-arrow-circle-up mr-3"></i> Crear Usuario
+                        <i class="fas fa-arrow-circle-up mr-3"></i> Editar Usuario
                     </button>
                 </div>                
             </form>
