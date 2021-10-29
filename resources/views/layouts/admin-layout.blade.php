@@ -46,7 +46,7 @@
                 <i class="fas fa-user mr-3"></i>
                 Usuarios
             </a>
-            <a href="{{ route('empresas') }}" class="flex items-center text-white py-4 pl-6 nav-item">
+            <a href="" class="flex items-center text-white py-4 pl-6 nav-item">
                 <i class="fas fa-building mr-3"></i>
                 Clientes
             </a>

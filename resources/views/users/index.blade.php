@@ -87,6 +87,19 @@
                                 </a>
                             </span>
                         </span>
+                        <span
+                            class="relative inline-block px-3 py-1 font-semibold text-blue-900 leading-tight">
+                            <span aria-hidden class="absolute inset-0 bg-blue-200 opacity-50 rounded-full"></span>
+                            <span class="relative">
+                                <form action="{{ route('users.destroy', $user) }}" method="POST">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <button type="submit">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
+                            </span>
+                        </span>
                     </td>
                 </tr>
                 @endforeach
