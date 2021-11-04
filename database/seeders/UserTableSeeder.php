@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\UserProfile;
 use Illuminate\Database\Seeder;
 
 class UserTableSeeder extends Seeder
@@ -25,7 +26,11 @@ class UserTableSeeder extends Seeder
 
         User::factory()->count(60)->create([
             'image'=>'http://lorempixel.com/400/400/people',
-        ]);
+        ])->each(function($user){            
+            UserProfile::factory()->create([
+                'user_id' => $user->id
+            ]);
+        });
 
         
     }

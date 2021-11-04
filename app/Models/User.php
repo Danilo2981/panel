@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use App\Models\UserProfile;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -43,9 +44,15 @@ class User extends Authenticatable
         'is_admin' => 'boolean'
     ];
     
-
     public function isAdmin()
     {
         return $this->is_admin;
+    }
+
+    // Relacion un usuario con un perfil (one to one)
+    // Utiliza la funcion profile para obtener los datos de UserProfile
+    public function profile()
+    {
+        return $this->hasOne(UserProfile::class);
     }
 }

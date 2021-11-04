@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use App\Models\User;
+use App\Models\UserProfile;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -338,6 +339,25 @@ class UsersModuleTest extends TestCase
         $this->assertDatabaseMissing('users', [
             'id' => $user->id
         ]);
+    }
+
+     /**
+     * @test
+     * @testdox Puede obtener el perfil de usuario asociado a un usuario
+     */
+    function can_get_the_user_profile_associated_to_a_user()
+    {
+        // $this->markTestIncomplete();
+
+        $user = User::factory()->create();
+        $userProfile = UserProfile::factory()->create([
+            'website' => 'https://styde.net',
+            'user_id' => $user->id,
+        ]);
+
+        $this->assertInstanceOf(UserProfile::class, $user->profile);
+        $this->assertTrue($userProfile->is($user->profile));
+        $this->assertSame('https://styde.net', $user->profile->website);
     }
     
 }
