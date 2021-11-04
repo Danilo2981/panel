@@ -25,12 +25,14 @@ class Post extends Model
     // Relacion muchos a muchos las llaves foraneas van en la tabla pibot
     public function categories()
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Category::class)
+            ->withPivot(['featured'])
+            ->withTimestamps();
     }
 
     // Con sync obtiene las categorias relacionadas con los posts
     public function addCategories(Category ...$categories)
     {
-        $this->categories()->sync(new Collection($categories));
+        $this->categories()->syncWithoutDetaching(new Collection($categories));
     }
 }

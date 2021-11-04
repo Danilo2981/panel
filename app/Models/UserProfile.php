@@ -18,7 +18,7 @@ class UserProfile extends Model
     // Relacion inversa de uno a uno de user con UserProfile
     // UserProfile belongsTo User
 
-    public function user ()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

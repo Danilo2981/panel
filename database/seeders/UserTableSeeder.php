@@ -23,7 +23,11 @@ class UserTableSeeder extends Seeder
             'password' => bcrypt('123456'),
             'image'=>'http://lorempixel.com/400/400/people',
             'is_admin' => true,
-        ]);
+        ])->each(function($user){            
+            UserProfile::factory()->create([
+                'user_id' => $user->id
+            ]);
+        });;
 
         User::factory()->count(60)->create([
             'image'=>'http://lorempixel.com/400/400/people',
