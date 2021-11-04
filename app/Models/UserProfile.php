@@ -10,6 +10,11 @@ class UserProfile extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'job_title',
+        'website'
+    ];
+
     // Relacion inversa de uno a uno de user con UserProfile
     // UserProfile belongsTo User
 

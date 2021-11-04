@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Post;
 use App\Models\UserProfile;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -54,5 +55,12 @@ class User extends Authenticatable
     public function profile()
     {
         return $this->hasOne(UserProfile::class);
+    }
+
+    // Asume que User de la class va a traer como user_id, se creo la llave foranea con
+    // otro nombre poner como segunda instancia la llave foranea
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'author_id');
     }
 }

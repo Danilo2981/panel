@@ -3,10 +3,13 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
+use App\Models\Post;
 use App\Models\User;
 use App\Models\UserProfile;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class UsersModuleTest extends TestCase
 {
@@ -359,5 +362,25 @@ class UsersModuleTest extends TestCase
         $this->assertTrue($userProfile->is($user->profile));
         $this->assertSame('https://styde.net', $user->profile->website);
     }
+
+     /** @test */
+     function a_user_has_many_posts()
+     {
+         $user = User::factory()->create();
+         $firstPost = Post::factory()->create([
+             'author_id' => $user->id,
+         ]);
+         $secondPost = Post::factory()->create([
+             'author_id' => $user->id,
+         ]);
+ 
+         $this->assertInstanceOf(HasMany::class, $user->posts());
+         $this->assertInstanceOf(Collection::class, $user->posts);
+         $this->assertCount(2, $user->posts);
+ 
+         $posts = $user->posts->all();
+         $this->assertTrue($posts[0]->is($firstPost));
+         $this->assertTrue($posts[1]->is($secondPost));
+     }
     
 }

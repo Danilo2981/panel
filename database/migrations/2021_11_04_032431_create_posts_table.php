@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserProfilesTable extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,18 @@ class CreateUserProfilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_profiles', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
 
             // En las relaciones HasOne o HasMany la llave foranea va en las inversas
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')
-                ->unique()
+            $table->unsignedBigInteger('author_id');
+            $table->foreign('author_id')
                 ->references('id')
-                ->on('users')
-                ->onDelete('CASCADE');
+                ->on('users');
 
-            $table->string('job_title')->nullable();
-            $table->string('website')->nullable();
-            // Other columns here...
-
+            $table->string('title');
+            $table->mediumText('content');
+        
             $table->timestamps();
         });
     }
@@ -39,6 +36,6 @@ class CreateUserProfilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_profiles');
+        Schema::dropIfExists('posts');
     }
 }

@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class UserProfileModuleTest extends TestCase
 {
+    use RefreshDatabase;
+    
     /**
      * @test
      * @testdox Un perfil de usuario pertenece a un usuario.
