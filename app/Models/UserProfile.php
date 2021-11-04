@@ -12,7 +12,9 @@ class UserProfile extends Model
 
     protected $fillable = [
         'job_title',
-        'website'
+        'website',
+        'bio',
+        'twitter'
     ];
 
     // Relacion inversa de uno a uno de user con UserProfile

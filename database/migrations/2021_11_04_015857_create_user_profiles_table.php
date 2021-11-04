@@ -26,6 +26,8 @@ class CreateUserProfilesTable extends Migration
 
             $table->string('job_title')->nullable();
             $table->string('website')->nullable();
+            $table->string('bio', 1000);
+            $table->string('twitter')->nullable();
             // Other columns here...
 
             $table->timestamps();

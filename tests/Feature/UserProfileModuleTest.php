@@ -24,6 +24,7 @@ class UserProfileModuleTest extends TestCase
         $user = User::factory()->create();
         $userProfile = UserProfile::factory()->create([
             'website' => 'https://styde.net',
+            'bio' => 'Piloto de Avion',
             'user_id' => $user->id,
         ]);
 

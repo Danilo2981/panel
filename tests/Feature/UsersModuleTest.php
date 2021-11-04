@@ -69,13 +69,27 @@ class UsersModuleTest extends TestCase
         $this->post(route('users.store'), [
             'name' => 'Danilo',
             'email' => 'danilo.vega.lopez@gmail.com',
-            'password' => '123456'
+            'password' => '123456',
+            // varores a guardar en otra tabla a traves de la relacion
+            'job_title'  => 'Ingeniebrio',
+            'website'  => 'www.ineg.com',
+            'bio' => 'Programador de Laravel y Vue.js',
+            'twitter' => 'https://www.twiter.com/capo'
         ])->assertRedirect(route('users'));
 
         $this->assertCredentials([
             'name' => 'Danilo',
             'email' => 'danilo.vega.lopez@gmail.com',
             'password' => '123456'
+        ]);
+
+        // Comprobacion de valores en segunda tabla
+        $this->assertDatabaseHas('user_profiles', [
+            'job_title'  => 'Ingeniebrio',
+            'website'  => 'www.ineg.com',
+            'bio' => 'Programador de Laravel y Vue.js',
+            'twitter' => 'https://www.twiter.com/capo',
+            'user_id' => User::first()->id
         ]);
     }
     
@@ -355,6 +369,7 @@ class UsersModuleTest extends TestCase
         $user = User::factory()->create();
         $userProfile = UserProfile::factory()->create([
             'website' => 'https://styde.net',
+            'bio' => 'Conductor de avion',
             'user_id' => $user->id,
         ]);
 

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\UserProfile;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
+use App\Http\Requests\CreateUserRequest;
 
 class UserController extends Controller
 {
@@ -40,26 +41,10 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateUserRequest $request)
     {
-        $data = request()->validate([
-            'name' => 'required',
-            'email' => ['required', 'email', Rule::unique('users')],
-            'password' => ['required', 'min:6']
-        ],[
-            'name.required' => 'El campo nombre es obligatorio',
-            'email.required' => 'El email es requerido',
-            'email.unique' => 'El email de ser unico',
-            'password.required' => 'El password es requerido',
-            'password.min' => 'El password debe tener mas de 6 caracteres'
-        ]);
-
-        User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
-
+        $request->createUser();
+        
         return redirect()->route('users');
     }
 

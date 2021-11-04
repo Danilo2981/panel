@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Post;
-use App\Models\UserProfile;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
