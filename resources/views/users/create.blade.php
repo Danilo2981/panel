@@ -30,18 +30,20 @@
                         <label class="block text-sm text-gray-600" for="name">Nombre</label>
                         <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="name" name="name" type="text" placeholder="Nombre del Usuario" value="{{ old('name') }}" aria-label="Name">
                     </div>
-                    @if ($errors->has('name'))
-                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 mt-2 rounded relative" role="alert">
-                        <strong class="font-bold">Error!</strong>
-                        <span class="block sm:inline">{{ $errors->first('name') }}</span>
-                    </div>
-                    @endif
                     <div class="w-full lg:w-1/2 ml-2">
                         <label class="block text-sm text-gray-600" for="password">Password</label>
                         <input class="w-full px-5  py-1 text-gray-700 bg-gray-200 rounded" id="password" name="password" type="password" placeholder="Password del Usuario" aria-label="Password">
                     </div>
+                </div>
+                <div class="flex">
+                    @if ($errors->has('name'))
+                    <div class="w-full lg:w-1/2 mr-2 bg-red-100 border border-red-400 text-red-700 px-4 mt-2 rounded relative" role="alert">
+                        <strong class="font-bold">Error!</strong>
+                        <span class="block sm:inline">{{ $errors->first('name') }}</span>
+                    </div>
+                    @endif
                     @if ($errors->has('password'))
-                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 mt-2 rounded relative" role="alert">
+                    <div class="w-full lg:w-1/2 ml-2 bg-red-100 border border-red-400 text-red-700 px-4 mt-2 rounded relative" role="alert">
                         <strong class="font-bold">Error!</strong>
                         <span class="block sm:inline">{{ $errors->first('password') }}</span>
                     </div>    
@@ -52,41 +54,44 @@
                         <label class="block text-sm text-gray-600" for="email">e-mail</label>
                         <input class="w-full px-5  py-1 text-gray-700 bg-gray-200 rounded" id="email" name="email" type="email" placeholder="E-mail del Usuario" value="{{ old('email') }}" aria-label="Email">
                     </div>
-                    @if ($errors->has('email'))
-                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 mt-2 rounded relative" role="alert">
-                        <strong class="font-bold">Error!</strong>
-                        <span class="block sm:inline">{{ $errors->first('email') }}</span>
-                    </div>    
-                    @endif
                     <div class="w-full lg:w-1/2 ml-2">
                         <label class="block text-sm text-gray-600" for="website">Website</label>
                         <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="website" name="website" type="text" placeholder="Web del Usuario" value="{{ old('website') }}" aria-label="Web">
                     </div>
+                </div>
+                <div class="flex">
+                    @if ($errors->has('email'))
+                    <div class="w-full lg:w-1/2 mr-2 bg-red-100 border border-red-400 text-red-700 px-4 mt-2 rounded relative" role="alert">
+                        <strong class="font-bold">Error!</strong>
+                        <span class="block sm:inline">{{ $errors->first('email') }}</span>
+                    </div>    
+                    @endif
                     @if ($errors->has('website'))
-                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 mt-2 rounded relative" role="alert">
+                    <div class="w-full lg:w-1/2 ml-2 bg-red-100 border border-red-400 text-red-700 px-4 mt-2 rounded relative" role="alert">
                         <strong class="font-bold">Error!</strong>
                         <span class="block sm:inline">{{ $errors->first('website') }}</span>
                     </div>
-                    @endif
-                    
+                    @endif                    
                 </div>
                 <div class="flex">
                     <div class="w-full lg:w-1/2 mr-2">
                         <label class="block text-sm text-gray-600" for="job_title">Titulo</label>
                         <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="job_title" name="job_title" type="text" placeholder="Titulo del Usuario" value="{{ old('job_title') }}" aria-label="Job_title">
                     </div>
+                    <div class="w-full lg:w-1/2 ml-2">
+                        <label class="block text-sm text-gray-600" for="twitter">Twitter</label>
+                        <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="twitter" name="twitter" type="text" placeholder="Twitter del Usuario" value="{{ old('twitter') }}" aria-label="Twitter">
+                    </div>                    
+                </div>
+                <div class="flex">
                     @if ($errors->has('job_title'))
-                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 mt-2 rounded relative" role="alert">
+                    <div class="w-full lg:w-1/2 mr-2 bg-red-100 border border-red-400 text-red-700 px-4 mt-2 rounded relative" role="alert">
                         <strong class="font-bold">Error!</strong>
                         <span class="block sm:inline">{{ $errors->first('job_title') }}</span>
                     </div>
                     @endif
-                    <div class="w-full lg:w-1/2 ml-2">
-                        <label class="block text-sm text-gray-600" for="twitter">Twitter</label>
-                        <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="twitter" name="twitter" type="text" placeholder="Twitter del Usuario" value="{{ old('twitter') }}" aria-label="Twitter">
-                    </div>
                     @if ($errors->has('twitter'))
-                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 mt-2 rounded relative" role="alert">
+                    <div class="w-full lg:w-1/2 ml-2 bg-red-100 border border-red-400 text-red-700 px-4 mt-2 rounded relative" role="alert">
                         <strong class="font-bold">Error!</strong>
                         <span class="block sm:inline">{{ $errors->first('twitter') }}</span>
                     </div>
@@ -96,7 +101,9 @@
                     <div class="w-full content-center lg:w-1/2">
                         <label class="block text-sm text-gray-600 mt-2" for="bio">Bio</label>
                         <textarea class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="bio" name="bio" type="text" placeholder="Nombre del Usuario" value="{{ old('bio') }}" aria-label="Bio"></textarea>
-                    </div>
+                    </div>   
+                </div>
+                <div class="flex place-content-center">
                     @if ($errors->has('bio'))
                     <div class="bg-red-100 border border-red-400 text-red-700 px-4 mt-2 rounded relative" role="alert">
                         <strong class="font-bold">Error!</strong>

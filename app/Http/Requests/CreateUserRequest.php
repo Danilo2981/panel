@@ -30,8 +30,8 @@ class CreateUserRequest extends FormRequest
             'name' => 'required',
             'email' => ['required', 'email', Rule::unique('users')],
             'password' => ['required', 'min:6'],
-            'job_title'  => '',
-            'website'  => '',
+            'job_title'  => 'required',
+            'website'  => 'required',
             'bio' => 'required',
             'twitter' => 'url',
         ];
@@ -45,6 +45,8 @@ class CreateUserRequest extends FormRequest
             'email.unique' => 'El email de ser unico',
             'password.required' => 'El password es requerido',
             'password.min' => 'El password debe tener mas de 6 caracteres',
+            'job_title' => 'El campo es requerido',
+            'website' => 'El campo es requerido',
             'bio.required' => 'El campo es requerido',
             'twitter.url' => 'No es una direccion URL valida',
         ];
